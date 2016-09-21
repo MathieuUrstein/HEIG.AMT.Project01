@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.heigvd.amt</groupId>
-    <artifactId>HEIG.AMT.Labo01</artifactId>
+    <artifactId>Labo01</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>HEIG.AMT.Labo01</name>
+    <name>Labo01</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
