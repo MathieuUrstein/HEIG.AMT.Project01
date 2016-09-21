@@ -10,4 +10,4 @@ mvn clean install
 ```
 docker-compose up --build
 ```
-* Pour voir l'application active, il suffit de taper l'URL suivante "http://localhost:9090/Labo01-1.0" dans le navigateur.
+* Pour voir l'application active, il suffit de taper l'URL suivante **"http://localhost:9090/Labo01-1.0"** dans le navigateur.
