@@ -4,10 +4,10 @@
 ```
 mvn clean install
 ```
-* Un fichier "Labo01-1.0.war" est créé dans un nouveau dossier "target" apparaissant également à la racine.
+* Un fichier "Projet01.war" est créé dans un nouveau dossier "target" apparaissant également à la racine.
 * Copier ce fichier sous "docker/images/wildfly/".
 * Il faut maintenant entrer la commande qui suit à nouveau à la racine pour lancer l'application :
 ```
 docker-compose up --build
 ```
-* Pour voir l'application active, il suffit de taper l'URL suivante **"http://localhost:9090/Labo01-1.0"** dans le navigateur.
+* Pour voir l'application active, il suffit de taper l'URL suivante **"http://localhost:9090/Projet01/"** dans le navigateur.

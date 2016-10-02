@@ -29,7 +29,7 @@ public class UsersManager {
         int posListUsers = isUserExisting(userName);
 
         if (posListUsers != -1) {
-            if (listUsers.get(posListUsers).getPassword().contentEquals(userPassword)) {
+            if (listUsers.get(posListUsers).getUserPassword().contentEquals(userPassword)) {
                 return true;
             }
         }

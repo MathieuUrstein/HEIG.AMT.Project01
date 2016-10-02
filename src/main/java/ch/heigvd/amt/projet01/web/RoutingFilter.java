@@ -20,10 +20,11 @@ public class RoutingFilter implements Filter {
     }
 
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        request.setAttribute("usersManager", usersManager);
+
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
@@ -38,16 +39,13 @@ public class RoutingFilter implements Filter {
                 request.getRequestDispatcher("/protected").forward(request, response);
             }
             else {
-                request.setAttribute("usersManager", usersManager);
                 request.getRequestDispatcher(path).forward(request, response);
             }
         }
         else if (path.contentEquals("/protected")) {
-            request.setAttribute("usersManager", usersManager);
             request.getRequestDispatcher("/login").forward(request, response);
         }
         else {
-            request.setAttribute("usersManager", usersManager);
             request.getRequestDispatcher(path).forward(request, response);
         }
     }

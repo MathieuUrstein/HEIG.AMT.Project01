@@ -7,16 +7,16 @@ public class User {
     private String userName;
     private String userPassword;
 
-    public User(String userName, String password) {
+    public User(String userName, String userPassword) {
         this.userName = userName;
-        this.userPassword = password;
+        this.userPassword = userPassword;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public String getPassword() {
+    public String getUserPassword() {
         return userPassword;
     }
 }
