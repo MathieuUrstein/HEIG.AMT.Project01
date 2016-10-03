@@ -15,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UsersManager usersManager = (UsersManager) request.getAttribute("usersManager");
+
         if (usersManager.createUser(request.getParameter("userName"), request.getParameter("userPassword"))) {
             System.out.println("USER REGISTERED");
             request.getSession().setAttribute("userName", request.getParameter("userName"));

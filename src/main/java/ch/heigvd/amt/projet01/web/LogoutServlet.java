@@ -12,7 +12,7 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().invalidate();
+        request.getSession(false).invalidate();
         System.out.println("USER DISCONNECTED");
         request.getRequestDispatcher("/front").forward(request, response);
     }

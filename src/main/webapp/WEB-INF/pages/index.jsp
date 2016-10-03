@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>Projet01 - AMT 2016-2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,25 +46,32 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+            <c:choose>
+                <c:when test="${sessionScope.userName == null}">
+                    <a class="navbar-brand topnav" href="login">Se connecter</a>
+                </c:when>
+                <c:otherwise>
+                    <a class="navbar-brand topnav" href="logout">Se déconnecter</a>
+                </c:otherwise>
+            </c:choose>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#about">About</a>
+                    <a href="protected">Accéder à la page protégée</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#services">Services</a>
                 </li>
                 <li>
                     <a href="#contact">Contact</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -81,21 +88,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1>Landing Page</h1>
-                    <h3><a href="login">Se connecter</a></h3>
-                    <h3><a href="protected">Accéder à la page protégée</a></h3>
-                    <h3><a href="logout">Se déconnecter</a></h3>
+                    <h1>Page d'accueil</h1>
+                    <h4>Bienvenue dans le projet01 du cours d'AMT</h4>
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
-                        <li>
+                        <!-- <li>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                            <a target="_blank" href="https://github.com/MojoMateo/HEIG.AMT.Projet01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repo Github</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -227,7 +232,7 @@
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                <p class="copyright text-muted small">Copyright © 2016. All Rights Reserved - Sébastien Boson, Mathieu Urstein</p>
             </div>
         </div>
     </div>

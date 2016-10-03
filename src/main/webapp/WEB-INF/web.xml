@@ -2,11 +2,19 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Archetype Created Web Application</display-name>
     <filter>
-        <filter-name>RoutingFilter</filter-name>
-        <filter-class>ch.heigvd.amt.projet01.web.RoutingFilter</filter-class>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>ch.heigvd.amt.projet01.web.SecurityFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>StaticFilter</filter-name>
+        <filter-class>ch.heigvd.amt.projet01.web.StaticFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>RoutingFilter</filter-name>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>StaticFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <servlet>

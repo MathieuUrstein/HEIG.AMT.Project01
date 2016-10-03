@@ -9,17 +9,17 @@ import java.io.IOException;
 /**
  * Created by sebbos on 28.09.2016.
  */
-public class RoutingFilter implements Filter {
+public class SecurityFilter implements Filter {
     private UsersManager usersManager = null;
 
-    public RoutingFilter() {
+    public SecurityFilter() {
         usersManager = new UsersManager();
     }
 
-    public void destroy() {
+    public void init(FilterConfig filterConfig) throws ServletException {
     }
 
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void destroy() {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
@@ -28,10 +28,10 @@ public class RoutingFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        if (isStaticAsset(path)) {
-            chain.doFilter(request, response);
-        }
-        else if (path.contentEquals("/")) {
+        // problème quand on revient en arrière dans le navigateur (on peut quand même revenir sur la page de login alors qu'on
+        // est connecté)
+
+        if (path.contentEquals("/")) {
             request.getRequestDispatcher("/front").forward(request, response);
         }
         else if (req.getSession().getAttribute("userName") != null) {
@@ -39,34 +39,14 @@ public class RoutingFilter implements Filter {
                 request.getRequestDispatcher("/protected").forward(request, response);
             }
             else {
-                request.getRequestDispatcher(path).forward(request, response);
+                chain.doFilter(request, response);
             }
         }
-        else if (path.contentEquals("/protected")) {
+        else if (path.contentEquals("/protected") || path.contentEquals("/logout")) {
             request.getRequestDispatcher("/login").forward(request, response);
         }
         else {
-            request.getRequestDispatcher(path).forward(request, response);
+            chain.doFilter(request, response);
         }
-    }
-
-    private boolean isStaticAsset(String path) {
-        if (path.startsWith("/css")) {
-            return true;
-        }
-        else if (path.startsWith("/font-awesome")) {
-            return true;
-        }
-        else if (path.startsWith("/fonts")) {
-            return true;
-        }
-        else if (path.startsWith("/img")) {
-            return true;
-        }
-        else if (path.startsWith("/js")) {
-            return true;
-        }
-
-        return false;
     }
 }
