@@ -82,7 +82,7 @@
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Connexion</h2>
                 <p class="lead">Veuillez fournir vos informations de connexion.</p>
-                <form id="loginForm" method="post" action="#">
+                <form id="loginForm" method="post" action="">
                     <div class="form-group">
                         <label for="userName">Nom d'utilisateur (email) :</label>
                         <input type="email" class="form-control" id="userName" name="userName" placeholder="exemple@domaine.com" required>
@@ -94,6 +94,12 @@
                     <button type="submit" class="btn btn-default">Se connecter</button>
                     <a href="register" class="pull-right">S'enregister</a>
                 </form>
+                <c:if test="${requestScope.message != null}">
+                    <br>
+                    <div class="alert alert-danger">
+                        <p>${requestScope.message}</p>
+                    </div>
+                </c:if>
             </div>
             <div class="col-lg-3 col-sm-pull-5  col-sm-6">
                 <img class="img-responsive" src="img/connection.png" alt="">

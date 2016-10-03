@@ -12,8 +12,9 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("message", "Deconnexion de l'utilisateur " + request.getSession(false).getAttribute("userName") + " OK !");
         request.getSession(false).invalidate();
         System.out.println("USER DISCONNECTED");
-        request.getRequestDispatcher("/front").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
     }
 }

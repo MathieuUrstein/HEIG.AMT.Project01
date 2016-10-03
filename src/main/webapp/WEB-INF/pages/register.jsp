@@ -93,6 +93,12 @@
                     </div>
                     <button type="submit" class="btn btn-default">S'enregister</button>
                 </form>
+                <c:if test="${requestScope.message != null}">
+                    <br>
+                    <div class="alert alert-danger">
+                        <p>${requestScope.message}</p>
+                    </div>
+                </c:if>
             </div>
             <div class="col-lg-3 col-lg-offset-2 col-sm-6">
                 <img class="img-responsive" src="img/register.png" alt="">

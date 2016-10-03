@@ -82,6 +82,7 @@
             <div class="col-lg-7 col-sm-6">
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Page protégée</h2>
+                <p class="lead">Merci <strong>${sessionScope.userName}</strong></p>
                 <p class="lead">Vous êtes maintenant connectés et avez accès à cette page !</p>
             </div>
         </div>

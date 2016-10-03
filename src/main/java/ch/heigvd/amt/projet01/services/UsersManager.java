@@ -16,6 +16,10 @@ public class UsersManager {
     }
 
     public boolean createUser(String userName, String userPassword) {
+        if (isEmptyUserNameOrPassword(userName, userPassword)) {
+            return false;
+        }
+
         if (isUserExisting(userName) == -1) {
             listUsers.add(new User(userName, userPassword));
 
@@ -26,12 +30,24 @@ public class UsersManager {
     }
 
     public boolean checkLoginOK(String userName, String userPassword) {
+        if (isEmptyUserNameOrPassword(userName, userPassword)) {
+            return false;
+        }
+
         int posListUsers = isUserExisting(userName);
 
         if (posListUsers != -1) {
             if (listUsers.get(posListUsers).getUserPassword().contentEquals(userPassword)) {
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    private boolean isEmptyUserNameOrPassword(String userName, String userPassword) {
+        if (userName.equals("") || userPassword.equals("")) {
+            return true;
         }
 
         return false;

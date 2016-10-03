@@ -25,6 +25,7 @@ public class RegisterServlet extends HttpServlet {
         }
         else {
             System.out.println("USER ALREADY EXISTS");
+            request.setAttribute("message", "Utilisateur existant ou non valide !");
             request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
         }
     }

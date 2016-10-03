@@ -29,12 +29,9 @@ public class SecurityFilter implements Filter {
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
         // problème quand on revient en arrière dans le navigateur (on peut quand même revenir sur la page de login alors qu'on
-        // est connecté)
+        // est connecté) => bloquer le cache du navigateur
 
-        if (path.contentEquals("/")) {
-            request.getRequestDispatcher("/front").forward(request, response);
-        }
-        else if (req.getSession().getAttribute("userName") != null) {
+        if (req.getSession().getAttribute("userName") != null) {
             if (path.contentEquals("/login") || path.contentEquals("/register")) {
                 request.getRequestDispatcher("/protected").forward(request, response);
             }
