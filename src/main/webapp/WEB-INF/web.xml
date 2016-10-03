@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <display-name>Archetype Created Web Application</display-name>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>ch.heigvd.amt.projet01.web.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.projet01.web.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.projet01.web.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.projet01.web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProtectedServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.projet01.web.ProtectedServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.projet01.web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProtectedServlet</servlet-name>
+        <url-pattern>/protected</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
