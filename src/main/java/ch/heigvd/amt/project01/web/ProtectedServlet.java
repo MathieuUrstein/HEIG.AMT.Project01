@@ -1,4 +1,6 @@
-package ch.heigvd.amt.projet01.web;
+package ch.heigvd.amt.project01.web;
+
+import ch.heigvd.amt.project01.util.Utility;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +14,11 @@ import java.io.IOException;
 public class ProtectedServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/protected.jsp").forward(request, response);
+        request.getRequestDispatcher(Utility.PATH + "protectedAccountInformation.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/protected.jsp").forward(request, response);
+        request.getRequestDispatcher(Utility.PATH + "protectedAccountInformation.jsp").forward(request, response);
     }
 }

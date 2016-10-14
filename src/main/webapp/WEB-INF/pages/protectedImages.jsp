@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: sebbos
   Date: 01.10.2016
-  Time: 22:52
+  Time: 23:40
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -51,6 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand topnav" href="logout">Logout</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,10 +59,10 @@
                 <li>
                     <a href="/Project01">Go back to welcome page</a>
                 </li>
-                <li>
-                    <a href="login">Go back to login page</a>
-                </li>
                 <!-- <li>
+                    <a href="login">Go back to connection page</a>
+                </li>
+                <li>
                     <a href="#contact">Contact</a>
                 </li> -->
             </ul>
@@ -80,41 +81,9 @@
         <div class="row">
             <div class="col-lg-7 col-sm-6">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Create your user account</h2>
-                <p class="lead">Please enter the required information to create a new account.</p>
-                <p class="lead">The fields marked with a * must be filled in.</p>
-                <form id="registerForm" method="post" action="">
-                    <div class="form-group">
-                        <label for="lastName">Last name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName">
-                    </div>
-                    <div class="form-group">
-                        <label for="firstName">First name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName">
-                    </div>
-                    <div class="form-group">
-                        <label for="userName">* Username (email):</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">* Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordConfirmation">* Confirm your password:</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required>
-                    </div>
-                    <button type="submit" class="btn btn-default">Create account</button>
-                </form>
-                <c:if test="${requestScope.message != null}">
-                    <br>
-                    <div class="alert alert-danger">
-                        <p>${requestScope.message}</p>
-                    </div>
-                </c:if>
-            </div>
-            <div class="col-lg-3 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="img/register.png" alt="">
+                <h2 class="section-heading">Protected page</h2>
+                <p class="lead">Thanks <strong>${sessionScope.userName}</strong></p>
+                <p class="lead">You are now connected and have access to this page !</p>
             </div>
         </div>
 
@@ -133,4 +102,5 @@
 </body>
 
 </html>
+
 

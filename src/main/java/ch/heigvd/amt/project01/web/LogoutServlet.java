@@ -1,4 +1,6 @@
-package ch.heigvd.amt.projet01.web;
+package ch.heigvd.amt.project01.web;
+
+import ch.heigvd.amt.project01.util.Utility;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +14,13 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("message", "Deconnexion de l'utilisateur " + request.getSession(false).getAttribute("userName") + " OK !");
+        String message = "The user " + request.getSession(false).getAttribute("userName") + " was correctly disconnected.";
+
+        request.setAttribute("message", message);
         request.getSession(false).invalidate();
+
         System.out.println("USER DISCONNECTED");
-        request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+
+        request.getRequestDispatcher(Utility.PATH + "index.jsp").forward(request, response);
     }
 }

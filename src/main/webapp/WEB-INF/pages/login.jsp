@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/Projet01">Retourner à la page d'accueil</a>
+                    <a href="/Project01">Go back to welcome page</a>
                 </li>
                 <!-- <li>
                     <a href="#services">Services</a>
@@ -80,19 +80,19 @@
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Connexion</h2>
-                <p class="lead">Veuillez fournir vos informations de connexion.</p>
+                <h2 class="section-heading">Connection</h2>
+                <p class="lead">Please enter your login information.</p>
                 <form id="loginForm" method="post" action="">
                     <div class="form-group">
-                        <label for="userName">Nom d'utilisateur (email) :</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="exemple@domaine.com" required>
+                        <label for="userName">Username (email):</label>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="userPassword">Mot de passe :</label>
-                        <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="exemple" required>
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-default">Se connecter</button>
-                    <a href="register" class="pull-right">S'enregister</a>
+                    <button type="submit" class="btn btn-default">Login</button>
+                    <a href="register" class="pull-right">Register</a>
                 </form>
                 <c:if test="${requestScope.message != null}">
                     <br>
