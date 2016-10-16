@@ -15,10 +15,10 @@ public interface UsersManagerLocal {
             throws IllegalArgumentException, SQLException;
     void loginUser(String userName, String password) throws IllegalArgumentException, SQLException;
 
-    User loadUser(long id);
-    long saveUser(User user);
-    void updateUser(long id, User user);
-    void deleteUser(long id);
+    User loadUser(long id) throws IllegalArgumentException, SQLException;
+    long saveUser(User user) throws IllegalArgumentException, SQLException;
+    void updateUser(long id, User user) throws IllegalArgumentException, SQLException;
+    void deleteUser(long id) throws IllegalArgumentException, SQLException;
 
     List<User> findAllUsers() throws SQLException;
 }

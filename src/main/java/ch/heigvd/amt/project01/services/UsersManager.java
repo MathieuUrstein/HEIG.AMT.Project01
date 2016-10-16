@@ -8,8 +8,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by sebbos on 10.10.2016.
@@ -65,10 +63,9 @@ public class UsersManager implements UsersManagerLocal {
         }
     }
 
-    //// TODO: 15.10.2016 if user doesn't exist ?
     @Override
-    public User loadUser(long id) {
-        User user = null;
+    public User loadUser(long id) throws IllegalArgumentException, SQLException {
+        User user;
 
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT * FROM user " +
@@ -78,39 +75,33 @@ public class UsersManager implements UsersManagerLocal {
             pstmt.setLong(1, id);
             ResultSet rs = pstmt.executeQuery();
 
-            rs.next();
+            // if the specified user (with its id) doesn't exist
+            if (!rs.next()) {
+                throw new IllegalArgumentException("The specified user (id) doesn't exist!");
+            }
 
             user = new User(id, rs.getString("lastName"), rs.getString("firstName"), rs.getString("userName"), rs.getString("password"));
-        }
-        catch (SQLException e) {
-            Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
 
         return user;
     }
 
-    //// TODO: 15.10.2016 if user already exists treatment (beginning already done)
     @Override
-    public long saveUser(User user) throws IllegalArgumentException {
-        long userId = 0;
-
-        try {
-            if (isUserExisting(user.getUserName())) {
-                throw new IllegalArgumentException("The specified username already exists!");
-            }
-
-            userId = insertionUserDB(user);
-        }
-        catch (SQLException e) {
-            Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+    public long saveUser(User user) throws IllegalArgumentException, SQLException {
+        if (isUserExisting(user.getUserName())) {
+            throw new IllegalArgumentException("The specified username already exists!");
         }
 
-        return userId;
+        return insertionUserDB(user);
     }
 
-    //// TODO: 15.10.2016 if id doesn't exist => user doesn't exist ?? OR EMAIL ALREADY EXISTS (NEW EMAIL)
     @Override
-    public void updateUser(long id, User user) {
+    public void updateUser(long id, User user) throws IllegalArgumentException, SQLException {
+        // case if user (id) doesn't exist
+        if (!isUserExisting(id)) {
+            throw new IllegalArgumentException("The specified user (id) doesn't exist!");
+        }
+
         try (Connection connection = dataSource.getConnection()) {
             String query = "UPDATE user " +
                            "SET lastName = ?, firstName = ?, userName = ?, password = ? " +
@@ -124,17 +115,18 @@ public class UsersManager implements UsersManagerLocal {
             pstmt.setLong(5, id);
 
             if (pstmt.executeUpdate() == 0) {
-                throw new SQLException("Updating user failed, no rows affected.!");
+                throw new SQLException("Updating user failed, no rows affected!");
             }
-        }
-        catch (SQLException e) {
-            Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
-    //// TODO: 16.10.2016 if the user doesn't exist (id) ???
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(long id) throws IllegalArgumentException, SQLException {
+        // case if user (id) doesn't exist
+        if (!isUserExisting(id)) {
+            throw new IllegalArgumentException("The specified user (id) doesn't exist!");
+        }
+
         try (Connection connection = dataSource.getConnection()) {
             String query = "DELETE FROM user " +
                            "WHERE id = ?;";
@@ -143,11 +135,8 @@ public class UsersManager implements UsersManagerLocal {
             pstmt.setLong(1, id);
 
             if (pstmt.executeUpdate() == 0) {
-                throw new SQLException("Deleting user failed, no rows affected.!");
+                throw new SQLException("Deleting user failed, no rows affected!");
             }
-        }
-        catch (SQLException e) {
-            Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
@@ -195,6 +184,25 @@ public class UsersManager implements UsersManagerLocal {
         }
     }
 
+    private boolean isUserExisting(long id) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            String query = "SELECT COUNT(*) AS userExisting FROM user " +
+                           "WHERE id = ?;";
+
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            rs.next();
+
+            if (rs.getInt("userExisting") == 1) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
     private long insertionUserDB(User user) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             String query = "INSERT INTO user (lastName, firstName, userName, password) VALUES (?, ?, ?, ?);";
@@ -206,7 +214,7 @@ public class UsersManager implements UsersManagerLocal {
             pstmt.setString(4, user.getPassword());
 
             if (pstmt.executeUpdate() == 0) {
-                throw new SQLException("Creating user failed, no rows affected.!");
+                throw new SQLException("Creating user failed, no rows affected!");
             }
 
             ResultSet rs = pstmt.getGeneratedKeys();

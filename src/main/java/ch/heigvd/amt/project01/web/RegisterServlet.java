@@ -51,12 +51,12 @@ public class RegisterServlet extends HttpServlet {
 
             String message;
 
-            if (e.getCause().getClass().getSimpleName().equals("IllegalArgumentException")) {
+            if (e.getCause() != null && e.getCause().getClass().getSimpleName().equals("IllegalArgumentException")) {
                 // message for exceptions with the inputs of the client
                 message = e.getCause().getMessage();
             }
             else {
-                // generic message for other exception (the client don't need the specific message associated to the exception)
+                // generic message for other exception (the client doesn't need the specific message associated to the exception)
                 message = "An error has occurred! Please try again.";
             }
 
