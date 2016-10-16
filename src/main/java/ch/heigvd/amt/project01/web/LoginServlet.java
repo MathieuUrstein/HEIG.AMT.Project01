@@ -1,7 +1,6 @@
 package ch.heigvd.amt.project01.web;
 
 import ch.heigvd.amt.project01.services.UsersManagerLocal;
-import ch.heigvd.amt.project01.util.Utility;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static ch.heigvd.amt.project01.util.Utility.PATH;
 
 /**
  * Created by sebbos on 01.10.2016.
@@ -33,13 +34,6 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/protected").forward(request, response);
 
         }
-        catch (IllegalArgumentException e) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, e.getMessage(), e);
-
-            request.setAttribute("message", e.getCause().getMessage());
-            //response.sendRedirect(request.getContextPath() + "/login");
-            request.getRequestDispatcher(Utility.PATH + "login.jsp").forward(request, response);
-        }
         catch (Exception e) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, e.getMessage(), e);
 
@@ -56,12 +50,12 @@ public class LoginServlet extends HttpServlet {
 
             request.setAttribute("message", message);
             //response.sendRedirect(request.getContextPath() + "/login");
-            request.getRequestDispatcher(Utility.PATH + "login.jsp").forward(request, response);
+            request.getRequestDispatcher(PATH + "login.jsp").forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(Utility.PATH + "login.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "login.jsp").forward(request, response);
     }
 }

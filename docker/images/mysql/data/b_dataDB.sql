@@ -1,3 +1,6 @@
+-- for correct encoding
+SET NAMES 'utf8';
+
 USE project01;
 
 INSERT INTO user (lastName, firstName, userName, password) VALUES

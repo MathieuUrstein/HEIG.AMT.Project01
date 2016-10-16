@@ -1,7 +1,6 @@
 package ch.heigvd.amt.project01.web;
 
 import ch.heigvd.amt.project01.services.UsersManagerLocal;
-import ch.heigvd.amt.project01.util.Utility;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -12,6 +11,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ch.heigvd.amt.project01.util.Utility.PATH;
+
 /**
  * Created by sebbos on 01.10.2016.
  */
@@ -21,18 +22,18 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // vérifier qu'on a bien un email correctemnt formé (@ + .domaine) => méthode java surement
 
-        // peut être un problème avec les messages d'erreur retournés par le serveur (genre 200 au lieu de 404 par exemple)
+        //// TODO: 15.10.2016 vérifier qu'on a bien un email correctemnt formé (@ + .domaine) => méthode java surement
 
-        // eviter de tout effacer si une erreur (amélioration)
+        //// TODO: 15.10.2016 vérifier que l'on dépasse pas la taille de stockage de chaque élément de la bd (VARCHAR(60))
 
-        // problème quand on revient en arrière dans le navigateur (on peut quand même revenir sur la page de login alors qu'on
-        // est connecté) => bloquer le cache du navigateur surement
+        //// TODO: 15.10.2016 peut être un problème avec les messages d'erreur retournés par le serveur (genre 200 au lieu de 404 par exemple) => retourner des messages d'erreur si problème avec findallusers et loaduser (DTO)
 
-        // vérifier que le changement de l'url fonctionne meme en entrant une url a la main (genre /login) + sans a la main
+        //// TODO: 15.10.2016 eviter de tout effacer si une erreur (amélioration)
 
-        // problème d'encodage dans la bd (é => ?!@¦)
+        //// TODO: 15.10.2016 problème quand on revient en arrière dans le navigateur (on peut quand même revenir sur la page de login alors qu'on est connecté) => bloquer le cache du navigateur surement
+
+        //// TODO: 15.10.2016 vérifier que le changement de l'url fonctionne meme en entrant une url a la main (genre /login) + sans a la main
 
         try {
             usersManager.createUser(request.getParameter("lastName"), request.getParameter("firstName"),
@@ -61,12 +62,12 @@ public class RegisterServlet extends HttpServlet {
 
             request.setAttribute("message", message);
             //response.sendRedirect(request.getContextPath() + "/register");
-            request.getRequestDispatcher(Utility.PATH + "register.jsp").forward(request, response);
+            request.getRequestDispatcher(PATH + "register.jsp").forward(request, response);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(Utility.PATH + "register.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "register.jsp").forward(request, response);
     }
 }

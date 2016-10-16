@@ -149,7 +149,7 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:/jdbc/project01" pool-name="project01DS" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:mysql://db:3306/project01</connection-url>
+                    <connection-url>jdbc:mysql://db:3306/project01?useSSL=false</connection-url>
                     <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql-connector-java-5.1.40-bin.jar_com.mysql.jdbc.Driver_5_1</driver>
                     <security>

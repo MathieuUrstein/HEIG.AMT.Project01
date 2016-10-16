@@ -1,12 +1,12 @@
 package ch.heigvd.amt.project01.web;
 
-import ch.heigvd.amt.project01.util.Utility;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static ch.heigvd.amt.project01.util.Utility.PATH;
 
 /**
  * Created by sebbos on 02.10.2016.
@@ -14,11 +14,11 @@ import java.io.IOException;
 public class ProtectedServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(Utility.PATH + "protectedAccountInformation.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "protectedAccountInformation.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(Utility.PATH + "protectedAccountInformation.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "protectedAccountInformation.jsp").forward(request, response);
     }
 }
