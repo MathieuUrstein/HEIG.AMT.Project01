@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
             // keep entries of the user (html form)
             request.setAttribute("givenUserName", request.getParameter("userName"));
             request.setAttribute("givenPassword", request.getParameter("password"));
-            request.getRequestDispatcher(PATH + "login.jsp").include(request, response);
+            request.getRequestDispatcher(PATH + "login.jsp").forward(request, response);
         }
     }
 

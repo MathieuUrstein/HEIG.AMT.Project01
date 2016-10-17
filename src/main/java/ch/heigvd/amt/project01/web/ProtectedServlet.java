@@ -14,11 +14,11 @@ import static ch.heigvd.amt.project01.util.Utility.PATH;
 public class ProtectedServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(PATH + "protectedAccountInformation.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "protected.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(PATH + "protectedAccountInformation.jsp").forward(request, response);
+        request.getRequestDispatcher(PATH + "protected.jsp").forward(request, response);
     }
 }

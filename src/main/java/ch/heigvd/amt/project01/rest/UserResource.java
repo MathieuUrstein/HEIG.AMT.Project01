@@ -4,7 +4,6 @@ import ch.heigvd.amt.project01.model.User;
 import ch.heigvd.amt.project01.rest.dto.GETUserDTO;
 import ch.heigvd.amt.project01.rest.dto.POSTUserDTO;
 import ch.heigvd.amt.project01.services.UsersManagerLocal;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static ch.heigvd.amt.project01.util.Utility.toJSON;
 import static java.util.stream.Collectors.toList;
 import static javax.ws.rs.core.Response.*;
 
@@ -52,8 +50,7 @@ public class UserResource {
                                          .filter(u -> byName == null || u.getLastName().equalsIgnoreCase(byName))
                                          .map(u -> toDTO(u))
                                          .collect(toList());
-
-        return returnJSONResponse(usersDTO);
+        return ok(usersDTO, MediaType.APPLICATION_JSON).build();
     }
 
     @Path("{id}")
@@ -77,7 +74,7 @@ public class UserResource {
             }
         }
 
-        return returnJSONResponse(toDTO(user));
+        return ok(toDTO(user), MediaType.APPLICATION_JSON).build();
     }
 
     @POST
@@ -159,21 +156,6 @@ public class UserResource {
         }
 
         return ok().build();
-    }
-
-    private Response returnJSONResponse(Object object) {
-        String json;
-
-        try {
-            json = toJSON(object);
-        }
-        catch (JsonProcessingException e) {
-            Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, e.getMessage(), e);
-
-            return serverError().build();
-        }
-
-        return ok(json, MediaType.APPLICATION_JSON).build();
     }
 
     private User fromDTO(POSTUserDTO userDTO) {

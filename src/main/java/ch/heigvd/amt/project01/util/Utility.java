@@ -1,8 +1,5 @@
 package ch.heigvd.amt.project01.util;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -28,11 +25,5 @@ public class Utility {
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
         response.setDateHeader("Expires", 0); // proxies
-    }
-
-    public static String toJSON(Object object) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-
-        return mapper.writeValueAsString(object);
     }
 }

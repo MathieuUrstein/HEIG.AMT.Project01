@@ -26,8 +26,6 @@ public class SecurityFilter implements Filter {
         requestEncoding(req);
         disableBrowserCache(rep);
 
-        //// TODO: 15.10.2016 PEUT ETRE BEGINWITH AU LIEU DE CONTENTEQUALS POUR /protected => plusieurs pages protégées ?
-
         if (req.getSession().getAttribute("userName") != null) {
             if (path.contentEquals("/login") || path.contentEquals("/register")) {
                 // keep correct url (the client must do a new request to the ProtectedServlet)

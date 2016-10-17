@@ -113,7 +113,7 @@
                     </div>
                 </c:if>
             </div>
-            <div class="col-lg-3 col-lg-offset-2 col-sm-6">
+            <div class="col-lg-3 col-lg-offset-2 margin-top-150px col-sm-6">
                 <img class="img-responsive" src="img/register.png" alt="">
             </div>
         </div>

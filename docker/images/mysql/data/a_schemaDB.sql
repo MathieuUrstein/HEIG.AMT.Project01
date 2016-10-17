@@ -15,7 +15,7 @@ DROP SCHEMA IF EXISTS `project01` ;
 -- -----------------------------------------------------
 -- Schema project01
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `project01` DEFAULT CHARACTER SET 'utf8' ;
+CREATE SCHEMA IF NOT EXISTS `project01` DEFAULT CHARACTER SET utf8 ;
 USE `project01` ;
 
 -- -----------------------------------------------------

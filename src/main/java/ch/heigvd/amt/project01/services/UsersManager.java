@@ -3,7 +3,7 @@ package ch.heigvd.amt.project01.services;
 import ch.heigvd.amt.project01.model.User;
 
 import javax.annotation.Resource;
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.sql.DataSource;
@@ -16,13 +16,15 @@ import java.util.logging.Logger;
 /**
  * Created by sebbos on 10.10.2016.
  */
-@Singleton
+@Stateless
 public class UsersManager implements UsersManagerLocal {
     @Resource(lookup = "java:/jdbc/project01")
     private DataSource dataSource;
 
-    ////// TODO: 17.10.2016 agrandir images + meilleur contenu pour la page de garde surement
-    //// TODO: 15.10.2016 mise à jour future => hasher les mots de passe
+    // max size in characters
+    private final int MAX_USER_ENTRY_SIZE = 60;
+
+    //// TODO: 17.10.2016 faire une page d'admin avec les utilisateurs pour GET de l'api REST
     //// TODO: 16.10.2016 tester l'application avec JMeter
 
     @Override
@@ -31,6 +33,9 @@ public class UsersManager implements UsersManagerLocal {
         if (userName.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
             throw new IllegalArgumentException("Username, password and password confirmation can't be empty!");
         }
+
+        // check if user entries are not too long (> MAX_USER_ENTRY_SIZE)
+        checkUserEntriesSize(lastName, firstName, userName, password);
 
         // check if the user name is a valid email address
         if (!isValidEmailAddress(userName)) {
@@ -176,7 +181,22 @@ public class UsersManager implements UsersManagerLocal {
         return users;
     }
 
-    private static boolean isValidEmailAddress(String email) {
+    private void checkUserEntriesSize(String lastName, String firstName, String userName, String password) throws IllegalArgumentException {
+        if (lastName.length() > MAX_USER_ENTRY_SIZE) {
+            throw new IllegalArgumentException("Last name is too long (max " + MAX_USER_ENTRY_SIZE + " characters)!");
+        }
+        else if (firstName.length() > MAX_USER_ENTRY_SIZE) {
+            throw new IllegalArgumentException("First name is too long (max " + MAX_USER_ENTRY_SIZE + " characters)!");
+        }
+        else if (userName.length() > MAX_USER_ENTRY_SIZE) {
+            throw new IllegalArgumentException("User name is too long (max " + MAX_USER_ENTRY_SIZE + " characters)!");
+        }
+        else if (password.length() > MAX_USER_ENTRY_SIZE) {
+            throw new IllegalArgumentException("Password is too long (max " + MAX_USER_ENTRY_SIZE + " characters)!");
+        }
+    }
+
+    private boolean isValidEmailAddress(String email) {
         boolean valid = true;
 
         try {
@@ -195,7 +215,7 @@ public class UsersManager implements UsersManagerLocal {
     private boolean isUserExisting(String userName) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT COUNT(*) AS userExisting FROM user " +
-                           "WHERE userName = ?;";
+                           "WHERE BINARY userName = ?;";
 
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, userName);
