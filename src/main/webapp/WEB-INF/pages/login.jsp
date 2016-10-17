@@ -85,11 +85,11 @@
                 <form id="loginForm" method="post" action="">
                     <div class="form-group">
                         <label for="userName">Username (email):</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" required>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
                     </div>
                     <button type="submit" class="btn btn-default">Login</button>
                     <a href="register" class="pull-right">Register</a>

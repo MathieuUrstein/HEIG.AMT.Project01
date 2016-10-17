@@ -30,9 +30,8 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("userName", request.getParameter("userName"));
             // setting session to expiry in 30 mins
             request.getSession().setMaxInactiveInterval(30 * 60);
-            //response.sendRedirect(request.getContextPath() + "/protected");
-            request.getRequestDispatcher("/protected").forward(request, response);
-
+            // keep correct url (the client must do a new request to the ProtectedServlet)
+            response.sendRedirect(request.getContextPath() + "/protected");
         }
         catch (Exception e) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, e.getMessage(), e);
@@ -49,8 +48,10 @@ public class LoginServlet extends HttpServlet {
             }
 
             request.setAttribute("message", message);
-            //response.sendRedirect(request.getContextPath() + "/login");
-            request.getRequestDispatcher(PATH + "login.jsp").forward(request, response);
+            // keep entries of the user (html form)
+            request.setAttribute("givenUserName", request.getParameter("userName"));
+            request.setAttribute("givenPassword", request.getParameter("password"));
+            request.getRequestDispatcher(PATH + "login.jsp").include(request, response);
         }
     }
 

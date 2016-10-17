@@ -2,8 +2,10 @@ package ch.heigvd.amt.project01.web;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static ch.heigvd.amt.project01.util.Utility.disableBrowserCache;
 import static ch.heigvd.amt.project01.util.Utility.requestEncoding;
 
 /**
@@ -18,21 +20,26 @@ public class SecurityFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
-        requestEncoding(req);
+        HttpServletResponse rep = (HttpServletResponse) response;
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        //// TODO: 15.10.2016 PEUT ETRE BEGINWITH AU LIEU DE CONTENTEQUALS POUR /protected => plusieurs pages protégées
+        requestEncoding(req);
+        disableBrowserCache(rep);
+
+        //// TODO: 15.10.2016 PEUT ETRE BEGINWITH AU LIEU DE CONTENTEQUALS POUR /protected => plusieurs pages protégées ?
 
         if (req.getSession().getAttribute("userName") != null) {
             if (path.contentEquals("/login") || path.contentEquals("/register")) {
-                request.getRequestDispatcher("/protected").forward(request, response);
+                // keep correct url (the client must do a new request to the ProtectedServlet)
+                rep.sendRedirect(req.getContextPath() + "/protected");
             }
             else {
                 chain.doFilter(request, response);
             }
         }
         else if (path.contentEquals("/protected") || path.contentEquals("/logout")) {
-            request.getRequestDispatcher("/login").forward(request, response);
+            // keep correct url (the client must do a new request to the LoginServlet)
+            rep.sendRedirect(req.getContextPath() + "/login");
         }
         else {
             chain.doFilter(request, response);

@@ -86,23 +86,23 @@
                 <form id="registerForm" method="post" action="">
                     <div class="form-group">
                         <label for="lastName">Last name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName">
+                        <input type="text" class="form-control" id="lastName" name="lastName" value="${requestScope.givenLastName}">
                     </div>
                     <div class="form-group">
                         <label for="firstName">First name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName">
+                        <input type="text" class="form-control" id="firstName" name="firstName" value="${requestScope.givenFirstName}">
                     </div>
                     <div class="form-group">
                         <label for="userName">* Username (email):</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" required>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
                     </div>
                     <div class="form-group">
                         <label for="password">* Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirmation">* Confirm your password:</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required>
+                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" value="${requestScope.givenPasswordConfirmation}" required>
                     </div>
                     <button type="submit" class="btn btn-default">Create account</button>
                 </form>

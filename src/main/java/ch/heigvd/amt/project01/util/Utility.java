@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,12 @@ public class Utility {
         catch (UnsupportedEncodingException e) {
             Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
+    }
+
+    public static void disableBrowserCache(HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", 0); // proxies
     }
 
     public static String toJSON(Object object) throws JsonProcessingException {

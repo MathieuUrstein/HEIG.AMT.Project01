@@ -23,18 +23,6 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //// TODO: 15.10.2016 vérifier qu'on a bien un email correctemnt formé (@ + .domaine) => méthode java surement
-
-        //// TODO: 15.10.2016 vérifier que l'on dépasse pas la taille de stockage de chaque élément de la bd (VARCHAR(60))
-
-        //// TODO: 15.10.2016 peut être un problème avec les messages d'erreur retournés par le serveur (genre 200 au lieu de 404 par exemple) => retourner des messages d'erreur si problème avec findallusers et loaduser (DTO)
-
-        //// TODO: 15.10.2016 eviter de tout effacer si une erreur (amélioration)
-
-        //// TODO: 15.10.2016 problème quand on revient en arrière dans le navigateur (on peut quand même revenir sur la page de login alors qu'on est connecté) => bloquer le cache du navigateur surement
-
-        //// TODO: 15.10.2016 vérifier que le changement de l'url fonctionne meme en entrant une url a la main (genre /login) + sans a la main
-
         try {
             usersManager.createUser(request.getParameter("lastName"), request.getParameter("firstName"),
                     request.getParameter("userName"), request.getParameter("password"), request.getParameter("passwordConfirmation"));
@@ -44,7 +32,8 @@ public class RegisterServlet extends HttpServlet {
             request.getSession().setAttribute("userName", request.getParameter("userName"));
             // setting session to expiry in 30 min
             request.getSession().setMaxInactiveInterval(30 * 60);
-            request.getRequestDispatcher("/protected").forward(request, response);
+            // keep correct url (the client must do a new request to the ProtectedServlet)
+            response.sendRedirect(request.getContextPath() + "/protected");
         }
         catch (Exception e) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, e.getMessage(), e);
@@ -61,7 +50,12 @@ public class RegisterServlet extends HttpServlet {
             }
 
             request.setAttribute("message", message);
-            //response.sendRedirect(request.getContextPath() + "/register");
+            // keep entries of the user (html form)
+            request.setAttribute("givenLastName", request.getParameter("lastName"));
+            request.setAttribute("givenFirstName", request.getParameter("firstName"));
+            request.setAttribute("givenUserName", request.getParameter("userName"));
+            request.setAttribute("givenPassword", request.getParameter("password"));
+            request.setAttribute("givenPasswordConfirmation", request.getParameter("passwordConfirmation"));
             request.getRequestDispatcher(PATH + "register.jsp").forward(request, response);
         }
     }

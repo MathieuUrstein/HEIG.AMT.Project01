@@ -4,10 +4,14 @@ import ch.heigvd.amt.project01.model.User;
 
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by sebbos on 10.10.2016.
@@ -17,13 +21,20 @@ public class UsersManager implements UsersManagerLocal {
     @Resource(lookup = "java:/jdbc/project01")
     private DataSource dataSource;
 
-    //// TODO: 15.10.2016 mise à jour future => hasher les mots de passe :)
+    ////// TODO: 17.10.2016 agrandir images + meilleur contenu pour la page de garde surement
+    //// TODO: 15.10.2016 mise à jour future => hasher les mots de passe
+    //// TODO: 16.10.2016 tester l'application avec JMeter
 
     @Override
     public void createUser(String lastName, String firstName, String userName, String password, String passwordConfirmation)
             throws IllegalArgumentException, SQLException {
         if (userName.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
             throw new IllegalArgumentException("Username, password and password confirmation can't be empty!");
+        }
+
+        // check if the user name is a valid email address
+        if (!isValidEmailAddress(userName)) {
+            throw new IllegalArgumentException("Invalid email address!");
         }
 
         if (!password.equals(passwordConfirmation)) {
@@ -163,6 +174,22 @@ public class UsersManager implements UsersManagerLocal {
         }
 
         return users;
+    }
+
+    private static boolean isValidEmailAddress(String email) {
+        boolean valid = true;
+
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        }
+        catch (AddressException e) {
+            Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+
+            valid = false;
+        }
+
+        return valid;
     }
 
     private boolean isUserExisting(String userName) throws SQLException {

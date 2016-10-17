@@ -4,14 +4,14 @@
   Date: 30.09.2016
   Time: 19:31
 --%>
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -56,7 +56,7 @@
                     <a class="navbar-brand topnav" href="login">Login</a>
                 </c:when>
                 <c:otherwise>
-                    <a class="navbar-brand topnav" href="logout">Logout</a>
+                    <a class="navbar-brand topnav" href="logout">Logout: ${sessionScope.userName}</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -88,11 +88,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <c:if test="${requestScope.message != null}">
-                        <div class="alert alert-success">
-                            <p>${requestScope.message}</p>
-                        </div>
-                    </c:if>
                     <h1>Welcome page</h1>
                     <h4>Welcome to the first project for AMT</h4>
                     <hr class="intro-divider">
