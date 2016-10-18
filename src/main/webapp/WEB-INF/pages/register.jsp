@@ -4,20 +4,20 @@
   Date: 01.10.2016
   Time: 22:52
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Projet01 - AMT 2016-2017</title>
+    <title>Project01 - AMT 2016-2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,10 +56,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/Projet01">Retourner à la page d'accueil</a>
+                    <a href="/Project01">Go back to welcome page</a>
                 </li>
                 <li>
-                    <a href="login">Retourner à la page de connexion</a>
+                    <a href="login">Go back to login page</a>
                 </li>
                 <!-- <li>
                     <a href="#contact">Contact</a>
@@ -80,18 +80,31 @@
         <div class="row">
             <div class="col-lg-7 col-sm-6">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Création d'un compte</h2>
-                <p class="lead">Veuillez fournir les informations demandées pour créer votre nouveau compte.</p>
+                <h2 class="section-heading">Create your user account</h2>
+                <p class="lead">Please enter the required information to create a new account.</p>
+                <p class="lead">The fields marked with a * must be filled in.</p>
                 <form id="registerForm" method="post" action="">
                     <div class="form-group">
-                        <label for="userName">Nom d'utilisateur (email) :</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="exemple@domaine.com" required>
+                        <label for="lastName">Last name:</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" value="${requestScope.givenLastName}">
                     </div>
                     <div class="form-group">
-                        <label for="userPassword">Mot de passe :</label>
-                        <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="exemple" required>
+                        <label for="firstName">First name:</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" value="${requestScope.givenFirstName}">
                     </div>
-                    <button type="submit" class="btn btn-default">S'enregister</button>
+                    <div class="form-group">
+                        <label for="userName">* Username (email):</label>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">* Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirmation">* Confirm your password:</label>
+                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" value="${requestScope.givenPasswordConfirmation}" required>
+                    </div>
+                    <button type="submit" class="btn btn-default">Create account</button>
                 </form>
                 <c:if test="${requestScope.message != null}">
                     <br>
@@ -100,7 +113,7 @@
                     </div>
                 </c:if>
             </div>
-            <div class="col-lg-3 col-lg-offset-2 col-sm-6">
+            <div class="col-lg-3 col-lg-offset-2 margin-top-150px col-sm-6">
                 <img class="img-responsive" src="img/register.png" alt="">
             </div>
         </div>

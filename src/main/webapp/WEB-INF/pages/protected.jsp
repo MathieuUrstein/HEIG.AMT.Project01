@@ -4,20 +4,20 @@
   Date: 01.10.2016
   Time: 23:40
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Projet01 - AMT 2016-2017</title>
+    <title>Project01 - AMT 2016-2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -51,16 +51,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="logout">Se déconnecter</a>
+            <a class="navbar-brand topnav" href="logout">Logout</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/Projet01">Retourner à la page d'accueil</a>
+                    <a href="/Project01">Go back to welcome page</a>
                 </li>
                 <!-- <li>
-                    <a href="login">Retourner à la page de connexion</a>
+                    <a href="login">Go back to connection page</a>
                 </li>
                 <li>
                     <a href="#contact">Contact</a>
@@ -81,9 +81,9 @@
         <div class="row">
             <div class="col-lg-7 col-sm-6">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Page protégée</h2>
-                <p class="lead">Merci <strong>${sessionScope.userName}</strong></p>
-                <p class="lead">Vous êtes maintenant connectés et avez accès à cette page !</p>
+                <h2 class="section-heading">Protected page</h2>
+                <p class="lead">Thanks <strong>${sessionScope.userName}</strong>.</p>
+                <p class="lead">You are now connected and have access to this page !</p>
             </div>
         </div>
 

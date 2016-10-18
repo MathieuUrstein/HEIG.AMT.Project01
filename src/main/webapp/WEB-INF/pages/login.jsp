@@ -4,20 +4,20 @@
   Date: 28.09.2016
   Time: 17:01
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Projet01 - AMT 2016-2017</title>
+    <title>Project01 - AMT 2016-2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/Projet01">Retourner à la page d'accueil</a>
+                    <a href="/Project01">Go back to welcome page</a>
                 </li>
                 <!-- <li>
                     <a href="#services">Services</a>
@@ -80,19 +80,19 @@
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Connexion</h2>
-                <p class="lead">Veuillez fournir vos informations de connexion.</p>
+                <h2 class="section-heading">Connection</h2>
+                <p class="lead">Please enter your login information.</p>
                 <form id="loginForm" method="post" action="">
                     <div class="form-group">
-                        <label for="userName">Nom d'utilisateur (email) :</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="exemple@domaine.com" required>
+                        <label for="userName">Username (email):</label>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
                     </div>
                     <div class="form-group">
-                        <label for="userPassword">Mot de passe :</label>
-                        <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="exemple" required>
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
                     </div>
-                    <button type="submit" class="btn btn-default">Se connecter</button>
-                    <a href="register" class="pull-right">S'enregister</a>
+                    <button type="submit" class="btn btn-default">Login</button>
+                    <a href="register" class="pull-right">Register</a>
                 </form>
                 <c:if test="${requestScope.message != null}">
                     <br>

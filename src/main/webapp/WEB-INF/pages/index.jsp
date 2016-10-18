@@ -4,20 +4,20 @@
   Date: 30.09.2016
   Time: 19:31
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Projet01 - AMT 2016-2017</title>
+    <title>Project01 - AMT 2016-2017</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -53,10 +53,11 @@
             </button>
             <c:choose>
                 <c:when test="${sessionScope.userName == null}">
-                    <a class="navbar-brand topnav" href="login">Se connecter</a>
+                    <a class="navbar-brand topnav" href="login">Login</a>
                 </c:when>
                 <c:otherwise>
-                    <a class="navbar-brand topnav" href="logout">Se déconnecter</a>
+                    <a class="navbar-brand topnav" href="admin">Admin</a>
+                    <a class="navbar-brand topnav" href="logout">Logout: ${sessionScope.userName}</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -64,7 +65,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="protected">Accéder à la page protégée</a>
+                    <a href="protected">Access the protected page</a>
                 </li>
                 <!-- <li>
                     <a href="#services">Services</a>
@@ -88,20 +89,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <c:if test="${requestScope.message != null}">
-                        <div class="alert alert-success">
-                            <p>${requestScope.message}</p>
-                        </div>
-                    </c:if>
-                    <h1>Page d'accueil</h1>
-                    <h4>Bienvenue dans le projet01 du cours d'AMT</h4>
+                    <h1>Welcome page</h1>
+                    <h4>Welcome to the first project for AMT</h4>
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
                         <!-- <li>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                         </li> -->
                         <li>
-                            <a target="_blank" href="https://github.com/MojoMateo/HEIG.AMT.Projet01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repo Github</span></a>
+                            <a target="_blank" href="https://github.com/MathieuUrstein/HEIG.AMT.Project01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repository GitHub</span></a>
                         </li>
                         <!-- <li>
                             <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
@@ -127,8 +123,8 @@
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Ceci est un test.<br>Oui un test.</h2>
-                <p class="lead">Nous vous remercions de votre compréhension.</p>
+                <h2 class="section-heading">This is a test.<br>Yes a test.</h2>
+                <p class="lead">Thank you for your patience !</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                 <img class="img-responsive" src="img/ipad.png" alt="">
@@ -149,8 +145,8 @@
             <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Un autre test.<br>Et oui !</h2>
-                <p class="lead">Encore merci.</p>
+                <h2 class="section-heading">An other test.<br>And yes !</h2>
+                <p class="lead">Thanks everybody.</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                 <img class="img-responsive" src="img/dog.png" alt="">
@@ -171,8 +167,8 @@
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Un dernier test.<br>Oui.</h2>
-                <p class="lead">Encore un grand merci.</p>
+                <h2 class="section-heading">A last test.<br>Yes.</h2>
+                <p class="lead">Thanks !</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                 <img class="img-responsive" src="img/phones.png" alt="">
@@ -192,7 +188,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <h2>Notre projet01 :</h2>
+                <h2>This is our first project.</h2>
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
@@ -200,7 +196,7 @@
                         <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                     </li> -->
                     <li>
-                        <a target="_blank" href="https://github.com/MojoMateo/HEIG.AMT.Projet01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i><span class="network-name">Repo Github</span></a>
+                        <a target="_blank" href="https://github.com/MathieuUrstein/HEIG.AMT.Project01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i><span class="network-name">Repository GitHub</span></a>
                     </li>
                     <!-- <li>
                         <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
@@ -222,11 +218,11 @@
             <div class="col-lg-12">
                 <ul class="list-inline">
                     <li>
-                        <a href="#">Accueil</a>
+                        <a href="#">Welcome</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#about">A propos</a>
+                        <a href="#about">About</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
