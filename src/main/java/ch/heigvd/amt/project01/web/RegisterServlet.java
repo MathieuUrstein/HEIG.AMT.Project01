@@ -1,6 +1,6 @@
 package ch.heigvd.amt.project01.web;
 
-import ch.heigvd.amt.project01.services.UsersManagerLocal;
+import ch.heigvd.amt.project01.services.dao.UsersManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ch.heigvd.amt.project01.util.Utility.MAX_SESSION_INACTIVE_INTERVAL;
 import static ch.heigvd.amt.project01.util.Utility.PATH;
 
 /**
@@ -22,7 +23,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
             usersManager.createUser(request.getParameter("lastName"), request.getParameter("firstName"),
                     request.getParameter("userName"), request.getParameter("password"), request.getParameter("passwordConfirmation"));
@@ -30,8 +30,7 @@ public class RegisterServlet extends HttpServlet {
             System.out.println("USER REGISTERED");
 
             request.getSession().setAttribute("userName", request.getParameter("userName"));
-            // setting session to expiry in 30 min
-            request.getSession().setMaxInactiveInterval(30 * 60);
+            request.getSession().setMaxInactiveInterval(MAX_SESSION_INACTIVE_INTERVAL);
             // keep correct url (the client must do a new request to the ProtectedServlet)
             response.sendRedirect(request.getContextPath() + "/protected");
         }

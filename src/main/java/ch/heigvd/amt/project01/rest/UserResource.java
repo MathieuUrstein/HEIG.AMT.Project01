@@ -1,9 +1,9 @@
 package ch.heigvd.amt.project01.rest;
 
 import ch.heigvd.amt.project01.model.User;
-import ch.heigvd.amt.project01.rest.dto.GETUserDTO;
-import ch.heigvd.amt.project01.rest.dto.POSTUserDTO;
-import ch.heigvd.amt.project01.services.UsersManagerLocal;
+import ch.heigvd.amt.project01.rest.dto.UserDTO;
+import ch.heigvd.amt.project01.rest.dto.UserPasswordDTO;
+import ch.heigvd.amt.project01.services.dao.UsersManagerLocal;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -46,7 +46,7 @@ public class UserResource {
             return serverError().build();
         }
 
-        List<GETUserDTO> usersDTO = users.stream()
+        List<UserDTO> usersDTO = users.stream()
                                          .filter(u -> byName == null || u.getLastName().equalsIgnoreCase(byName))
                                          .map(u -> toDTO(u))
                                          .collect(toList());
@@ -79,7 +79,7 @@ public class UserResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(POSTUserDTO userDTO) {
+    public Response createUser(UserPasswordDTO userDTO) {
         User user = fromDTO(userDTO);
         long userId;
 
@@ -110,7 +110,7 @@ public class UserResource {
     @Path("{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(POSTUserDTO userDTO, @PathParam(value = "id") long id) {
+    public Response updateUser(UserPasswordDTO userDTO, @PathParam(value = "id") long id) {
         User user = fromDTO(userDTO);
 
         try {
@@ -158,11 +158,11 @@ public class UserResource {
         return ok().build();
     }
 
-    private User fromDTO(POSTUserDTO userDTO) {
+    private User fromDTO(UserPasswordDTO userDTO) {
         return new User(userDTO.getLastName(), userDTO.getFirstName(), userDTO.getUserName(), userDTO.getPassword());
     }
 
-    private GETUserDTO toDTO(User user) {
-        return new GETUserDTO(user.getId(), user.getLastName(), user.getFirstName(), user.getUserName());
+    private UserDTO toDTO(User user) {
+        return new UserDTO(user.getId(), user.getLastName(), user.getFirstName(), user.getUserName());
     }
 }

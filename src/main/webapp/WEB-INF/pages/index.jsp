@@ -56,6 +56,7 @@
                     <a class="navbar-brand topnav" href="login">Login</a>
                 </c:when>
                 <c:otherwise>
+                    <a class="navbar-brand topnav" href="admin">Admin</a>
                     <a class="navbar-brand topnav" href="logout">Logout: ${sessionScope.userName}</a>
                 </c:otherwise>
             </c:choose>
@@ -96,7 +97,7 @@
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                         </li> -->
                         <li>
-                            <a target="_blank" href="https://github.com/MojoMateo/HEIG.AMT.Projet01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repository GitHub</span></a>
+                            <a target="_blank" href="https://github.com/MathieuUrstein/HEIG.AMT.Project01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repository GitHub</span></a>
                         </li>
                         <!-- <li>
                             <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>

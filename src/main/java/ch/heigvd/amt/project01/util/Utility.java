@@ -11,10 +11,14 @@ import java.util.logging.Logger;
  */
 public class Utility {
     public static final String PATH = "/WEB-INF/pages/";
+    // setting session to expiry in 30 mins
+    public static final int MAX_SESSION_INACTIVE_INTERVAL = 30 * 60;
+    private static final String ENCODING = "UTF-8";
 
-    public static void requestEncoding(HttpServletRequest request) {
+    public static void setEncoding(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(ENCODING);
+            response.setCharacterEncoding(ENCODING);
         }
         catch (UnsupportedEncodingException e) {
             Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, e.getMessage(), e);

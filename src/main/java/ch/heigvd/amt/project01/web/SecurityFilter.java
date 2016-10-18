@@ -5,8 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static ch.heigvd.amt.project01.util.Utility.disableBrowserCache;
-import static ch.heigvd.amt.project01.util.Utility.requestEncoding;
+import static ch.heigvd.amt.project01.util.Utility.setEncoding;
 
 /**
  * Created by sebbos on 28.09.2016.
@@ -23,8 +22,7 @@ public class SecurityFilter implements Filter {
         HttpServletResponse rep = (HttpServletResponse) response;
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        requestEncoding(req);
-        disableBrowserCache(rep);
+        setEncoding(req, rep);
 
         if (req.getSession().getAttribute("userName") != null) {
             if (path.contentEquals("/login") || path.contentEquals("/register")) {
@@ -35,7 +33,7 @@ public class SecurityFilter implements Filter {
                 chain.doFilter(request, response);
             }
         }
-        else if (path.contentEquals("/protected") || path.contentEquals("/logout")) {
+        else if (path.contentEquals("/protected") || path.contentEquals("/logout") || path.contentEquals("/admin")) {
             // keep correct url (the client must do a new request to the LoginServlet)
             rep.sendRedirect(req.getContextPath() + "/login");
         }
