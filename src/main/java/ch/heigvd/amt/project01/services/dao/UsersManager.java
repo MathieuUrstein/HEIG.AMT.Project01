@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ch.heigvd.amt.project01.util.Utility.MAX_USER_ENTRY_SIZE;
+
 /**
  * Created by sebbos on 10.10.2016.
  */
@@ -21,13 +23,8 @@ public class UsersManager implements UsersManagerLocal {
     @Resource(lookup = "java:/jdbc/project01")
     private DataSource dataSource;
 
-    // max size in characters
-    private final int MAX_USER_ENTRY_SIZE = 60;
-
-    //// TODO: 18.10.2016 implémenter une page graphique en lien avec les get de l'api rest
+    //// TODO: 18.10.2016 script pour que tout soit automatique avec docker-compose + cp intégré
     //// TODO: 17.10.2016 specify how passwords are handled
-
-    //// TODO: 18.10.2016 demander si on doit faire un utilisateur admin/admin + comment on doit rendre le fichier texte
 
     @Override
     public void createUser(String lastName, String firstName, String userName, String password, String passwordConfirmation)
@@ -59,6 +56,11 @@ public class UsersManager implements UsersManagerLocal {
     public void loginUser(String userName, String password) throws IllegalArgumentException, SQLException {
         if (userName.isEmpty() || password.isEmpty()) {
             throw new IllegalArgumentException("Username and password can't be empty!");
+        }
+
+        // check if the user name is a valid email address
+        if (!isValidEmailAddress(userName)) {
+            throw new IllegalArgumentException("Invalid email address!");
         }
 
         if (!isUserExisting(userName)) {

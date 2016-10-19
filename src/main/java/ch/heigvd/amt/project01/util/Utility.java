@@ -13,6 +13,8 @@ public class Utility {
     public static final String PATH = "/WEB-INF/pages/";
     // setting session to expiry in 30 mins
     public static final int MAX_SESSION_INACTIVE_INTERVAL = 30 * 60;
+    // max size in characters
+    public static final int MAX_USER_ENTRY_SIZE = 60;
     private static final String ENCODING = "UTF-8";
 
     public static void setEncoding(HttpServletRequest request, HttpServletResponse response) {

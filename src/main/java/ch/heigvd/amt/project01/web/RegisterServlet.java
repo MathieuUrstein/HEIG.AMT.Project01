@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static ch.heigvd.amt.project01.util.Utility.MAX_SESSION_INACTIVE_INTERVAL;
+import static ch.heigvd.amt.project01.util.Utility.MAX_USER_ENTRY_SIZE;
 import static ch.heigvd.amt.project01.util.Utility.PATH;
 
 /**
@@ -49,6 +50,7 @@ public class RegisterServlet extends HttpServlet {
             }
 
             request.setAttribute("message", message);
+            request.setAttribute("maxInputSize", MAX_USER_ENTRY_SIZE);
             // keep entries of the user (html form)
             request.setAttribute("givenLastName", request.getParameter("lastName"));
             request.setAttribute("givenFirstName", request.getParameter("firstName"));
@@ -61,6 +63,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("maxInputSize", MAX_USER_ENTRY_SIZE);
         request.getRequestDispatcher(PATH + "register.jsp").forward(request, response);
     }
 }
