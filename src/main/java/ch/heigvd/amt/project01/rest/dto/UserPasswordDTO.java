@@ -1,7 +1,10 @@
 package ch.heigvd.amt.project01.rest.dto;
 
 /**
- * Created by sebbos on 15.10.2016.
+ * Class that represents the user's dto without its id but with its password. It is the used representation of a user for
+ * POST and PUT requests (REST API).
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 public class UserPasswordDTO {
     private String lastName;
@@ -9,10 +12,21 @@ public class UserPasswordDTO {
     private String userName;
     private String password;
 
+    /**
+     * Default constructor for the class UserPasswordDTO.
+     */
     public UserPasswordDTO() {
 
     }
 
+    /**
+     * Constructor for the class UserPasswordDTO.
+     *
+     * @param lastName user's last name
+     * @param firstName user's first name
+     * @param userName user name of the user
+     * @param password user's password
+     */
     public UserPasswordDTO(String lastName, String firstName, String userName, String password) {
         this.lastName = lastName;
         this.firstName = firstName;

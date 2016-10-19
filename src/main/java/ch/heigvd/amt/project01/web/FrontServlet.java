@@ -9,7 +9,9 @@ import java.io.IOException;
 import static ch.heigvd.amt.project01.util.Utility.PATH;
 
 /**
- * Created by sebbos on 02.10.2016.
+ * Servlet that serves the main page of the website.
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 public class FrontServlet extends HttpServlet {
     @Override

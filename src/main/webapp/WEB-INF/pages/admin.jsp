@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sebbos
+  User: Mathieu Urstein and Sébastien Boson
   Date: 18.10.2016
   Time: 20:38
 --%>

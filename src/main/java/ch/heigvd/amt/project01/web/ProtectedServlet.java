@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static ch.heigvd.amt.project01.util.Utility.PATH;
-import static ch.heigvd.amt.project01.util.Utility.disableBrowserCache;
 
 /**
- * Created by sebbos on 02.10.2016.
+ * Servlet that serves the protected page.
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 public class ProtectedServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        disableBrowserCache(response);
         request.getRequestDispatcher(PATH + "protected.jsp").forward(request, response);
     }
 }

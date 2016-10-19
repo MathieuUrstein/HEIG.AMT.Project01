@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by sebbos on 02.10.2016.
+ * Servlet used to do the logout of an user.
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // the session is ended
         request.getSession(false).invalidate();
-
-        System.out.println("USER DISCONNECTED");
 
         // keep correct url (the client must do a new request to the FrontServlet)
         response.sendRedirect(request.getContextPath() + "/");

@@ -11,12 +11,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static ch.heigvd.amt.project01.util.Utility.MAX_SESSION_INACTIVE_INTERVAL;
-import static ch.heigvd.amt.project01.util.Utility.MAX_USER_ENTRY_SIZE;
-import static ch.heigvd.amt.project01.util.Utility.PATH;
+import static ch.heigvd.amt.project01.util.Utility.*;
 
 /**
- * Created by sebbos on 01.10.2016.
+ * Servlet that register a new user.
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 public class RegisterServlet extends HttpServlet {
     @EJB
@@ -25,10 +25,9 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            // creation of a new user with the given parameters
             usersManager.createUser(request.getParameter("lastName"), request.getParameter("firstName"),
                     request.getParameter("userName"), request.getParameter("password"), request.getParameter("passwordConfirmation"));
-
-            System.out.println("USER REGISTERED");
 
             request.getSession().setAttribute("userName", request.getParameter("userName"));
             request.getSession().setMaxInactiveInterval(MAX_SESSION_INACTIVE_INTERVAL);
@@ -40,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
 
             String message;
 
-            if (e.getCause() != null && e.getCause().getClass().getSimpleName().equals("IllegalArgumentException")) {
+            if (e.getCause() != null && e.getCause().getClass().getSimpleName().equals(IllegalArgumentException.class.getSimpleName())) {
                 // message for exceptions with the inputs of the client
                 message = e.getCause().getMessage();
             }
@@ -50,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
             }
 
             request.setAttribute("message", message);
-            request.setAttribute("maxInputSize", MAX_USER_ENTRY_SIZE);
+            request.setAttribute("maxInputSize", MAX_USER_INPUT_SIZE);
             // keep entries of the user (html form)
             request.setAttribute("givenLastName", request.getParameter("lastName"));
             request.setAttribute("givenFirstName", request.getParameter("firstName"));
@@ -63,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("maxInputSize", MAX_USER_ENTRY_SIZE);
+        request.setAttribute("maxInputSize", MAX_USER_INPUT_SIZE);
         request.getRequestDispatcher(PATH + "register.jsp").forward(request, response);
     }
 }
