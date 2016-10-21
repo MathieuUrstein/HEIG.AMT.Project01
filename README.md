@@ -58,7 +58,7 @@ When you access the application with the browser, you will see the welcome page.
 
 ## REST API
 
-You can find a description of the REST API of this Java EE application and the Postman script in the corresponding [Wiki page](https://github.com/MathieuUrstein/HEIG.AMT.Project01/wiki/REST-API).
+You can find a description of the REST API of this Java EE application and a Postman script in the corresponding [Wiki page](https://github.com/MathieuUrstein/HEIG.AMT.Project01/wiki/REST-API).
 
 ## JMeter script
 
