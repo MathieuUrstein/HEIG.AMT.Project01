@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ch.heigvd.amt.project01.util.Utility.MAX_USER_INPUT_SIZE;
 import static java.util.stream.Collectors.toList;
 import static javax.ws.rs.core.Response.*;
 
@@ -98,7 +99,7 @@ public class UserResource {
     /**
      * Method called when a POST request is made on our REST API with the following pattern: .../api/users.
      *
-     * @param userDTO class that contains all the information about the user that the client want to create (deserialization
+     * @param userDTO class that contains all the information about the user that the client wants to create (deserialization
      *                of the JSON information given by the client)
      * @return a specific HTTP status code if an error has occurred or the link (URI) of the new user that the client has created
      */
@@ -111,7 +112,7 @@ public class UserResource {
             userId = usersManager.saveUser(fromDTO(userDTO));
         }
         catch (IllegalArgumentException e) {
-            // exception with the inputs of the client (empty parameters)
+            // exception with the inputs of the client (missing parameters, empty parameters or too long parameters)
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, e.getMessage(), e);
 
             return status(Status.BAD_REQUEST).build();
@@ -143,7 +144,7 @@ public class UserResource {
      * In which the id is specified by the client who made the PUT request.
      * It is important to say that the PUT request must be used for a full update.
      *
-     * @param userDTO class that contains all the information about the user that the client want to update (deserialization
+     * @param userDTO class that contains all the information about the user that the client wants to update (deserialization
      *                of the JSON information given by the client)
      * @param id the specific id of the user that the client wants to update in the database
      * @return a specific HTTP status code if an error has occurred or if everything is correct
@@ -161,7 +162,7 @@ public class UserResource {
             usersManager.updateUser(id, fromDTO(userDTO));
         }
         catch (IllegalArgumentException e) {
-            // exception with the inputs of the client (empty parameters)
+            // exception with the inputs of the client (missing parameters, empty parameters or too long parameters)
             Logger.getLogger(UserResource.class.getName()).log(Level.SEVERE, e.getMessage(), e);
 
             return status(Status.BAD_REQUEST).build();
@@ -219,14 +220,21 @@ public class UserResource {
      * @throws IllegalArgumentException if the information in the DTO object are incorrect
      */
     private User fromDTO(UserPasswordDTO userDTO) throws IllegalArgumentException {
-        // we must give at least these two parameters (user name and password) in the received JSON information
-        if (userDTO.getUserName() == null || userDTO.getPassword() == null) {
-            throw new IllegalArgumentException("Username and password required!");
+        // we must give all the parameters in the received JSON information
+        if (userDTO.getLastName() == null || userDTO.getFirstName() == null || userDTO.getUserName() == null ||
+                userDTO.getPassword() == null) {
+            throw new IllegalArgumentException("All the parameters are required!");
         }
 
-        // these two given parameters can't ben empty
+        // user name and password parameters can't ben empty
         if (userDTO.getUserName().isEmpty() || userDTO.getPassword().isEmpty()) {
             throw new IllegalArgumentException("Username and password can't be empty!");
+        }
+
+        // check entries size
+        if (userDTO.getLastName().length() > MAX_USER_INPUT_SIZE || userDTO.getFirstName().length() > MAX_USER_INPUT_SIZE ||
+                userDTO.getUserName().length() > MAX_USER_INPUT_SIZE || userDTO.getPassword().length() > MAX_USER_INPUT_SIZE) {
+            throw new IllegalArgumentException("One or several entries are too long (max " + MAX_USER_INPUT_SIZE + " characters)!");
         }
 
         return new User(userDTO.getLastName(), userDTO.getFirstName(), userDTO.getUserName(), userDTO.getPassword());

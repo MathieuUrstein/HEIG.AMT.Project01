@@ -59,12 +59,6 @@
                 <li>
                     <a href="/Project01">Go back to welcome page</a>
                 </li>
-                <!-- <li>
-                    <a href="login">Go back to connection page</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li> -->
             </ul>
         </div>
         <!-- /.navbar-collapse -->

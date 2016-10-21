@@ -56,6 +56,7 @@
             </a>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
+                <a class="link-black navbar-brand topnav" href="logout">Logout: ${sessionScope.userName}</a>
                 <a class="link-black navbar-brand topnav" href="/Project01">Go back to welcome page</a>
             </div>
         </nav>

@@ -67,12 +67,6 @@
                 <li>
                     <a href="protected">Access the protected page</a>
                 </li>
-                <!-- <li>
-                    <a href="#services">Services</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li> -->
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -93,15 +87,9 @@
                     <h4>Welcome to the first project for AMT</h4>
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
-                        <!-- <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li> -->
                         <li>
                             <a target="_blank" href="https://github.com/MathieuUrstein/HEIG.AMT.Project01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Repository GitHub</span></a>
                         </li>
-                        <!-- <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -192,15 +180,9 @@
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
-                    <!-- <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li> -->
                     <li>
                         <a target="_blank" href="https://github.com/MathieuUrstein/HEIG.AMT.Project01" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i><span class="network-name">Repository GitHub</span></a>
                     </li>
-                    <!-- <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                    </li> -->
                 </ul>
             </div>
         </div>

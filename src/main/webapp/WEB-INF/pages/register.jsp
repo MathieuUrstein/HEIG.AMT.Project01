@@ -61,9 +61,6 @@
                 <li>
                     <a href="login">Go back to login page</a>
                 </li>
-                <!-- <li>
-                    <a href="#contact">Contact</a>
-                </li> -->
             </ul>
         </div>
         <!-- /.navbar-collapse -->

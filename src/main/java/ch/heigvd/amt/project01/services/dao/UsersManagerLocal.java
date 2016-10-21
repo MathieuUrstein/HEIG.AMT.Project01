@@ -28,7 +28,7 @@ public interface UsersManagerLocal {
     void createUser(String lastName, String firstName, String userName, String password, String passwordConfirmation)
             throws IllegalArgumentException, SQLException;
     /**
-     * Method for the login of an user which comes on the website. If everything is ok, this method terminate correctly.
+     * Method for the login of an user which comes on the website. If everything is ok, this method terminates correctly.
      *
      * @param userName user name of the user
      * @param password user's password
@@ -71,7 +71,7 @@ public interface UsersManagerLocal {
      */
     void updateUser(long id, User user) throws IllegalArgumentException, SQLException;
     /**
-     * Method to delete an user in the databse.
+     * Method to delete an user in the database.
      *
      * @param id specific id of an user in the database
      * @throws SQLException if an error occurred with the requests to the database

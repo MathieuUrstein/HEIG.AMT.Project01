@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import static ch.heigvd.amt.project01.util.Utility.*;
 
 /**
- * Servlet that register a new user.
+ * Servlet that registers a new user.
  *
  * @author Mathieu Urstein and Sébastien Boson
  */
@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
                 message = e.getCause().getMessage();
             }
             else {
-                // generic message for other exception (the client doesn't need the specific message associated to the exception)
+                // generic message for other exceptions (the client doesn't need the specific message associated to the exception)
                 message = "An error has occurred! Please try again.";
             }
 
