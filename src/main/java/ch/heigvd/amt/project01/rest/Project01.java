@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by sebbos on 15.10.2016.
+ * Class that is used for specific serialisation's configurations for DTOs (JSON).
+ * It is also our entry point of our REST API (.../api/...).
+ *
+ * @author Mathieu Urstein and Sébastien Boson
  */
 @ApplicationPath("/api")
 public class Project01 extends Application {
@@ -16,6 +19,7 @@ public class Project01 extends Application {
 
         // configuration for GlassFish
         properties.put("jersey.config.disableMoxyJson", true);
+
         return properties;
     }
 }

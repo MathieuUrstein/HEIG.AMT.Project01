@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sebbos
+  User: Mathieu Urstein and Sébastien Boson
   Date: 01.10.2016
   Time: 22:52
 --%>
@@ -26,7 +26,7 @@
     <link href="css/landing-page.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -86,23 +86,23 @@
                 <form id="registerForm" method="post" action="">
                     <div class="form-group">
                         <label for="lastName">Last name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" value="${requestScope.givenLastName}">
+                        <input type="text" class="form-control" id="lastName" name="lastName" value="${requestScope.givenLastName}" maxlength="${requestScope.maxInputSize}">
                     </div>
                     <div class="form-group">
                         <label for="firstName">First name:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" value="${requestScope.givenFirstName}">
+                        <input type="text" class="form-control" id="firstName" name="firstName" value="${requestScope.givenFirstName}" maxlength="${requestScope.maxInputSize}">
                     </div>
                     <div class="form-group">
                         <label for="userName">* Username (email):</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" maxlength="${requestScope.maxInputSize}" required>
                     </div>
                     <div class="form-group">
                         <label for="password">* Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" maxlength="${requestScope.maxInputSize}" required>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirmation">* Confirm your password:</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" value="${requestScope.givenPasswordConfirmation}" required>
+                        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" value="${requestScope.givenPasswordConfirmation}" maxlength="${requestScope.maxInputSize}" required>
                     </div>
                     <button type="submit" class="btn btn-default">Create account</button>
                 </form>

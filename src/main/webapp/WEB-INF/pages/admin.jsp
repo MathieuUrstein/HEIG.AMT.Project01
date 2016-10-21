@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sebbos
+  User: Mathieu Urstein and Sébastien Boson
   Date: 18.10.2016
   Time: 20:38
 --%>
@@ -15,7 +15,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -23,10 +23,10 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="./plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="./dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="./css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="./dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="./css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -129,11 +129,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.5
-        </div>
-        <strong>Copyright © 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        Copyright © 2016. All Rights Reserved - Sébastien Boson, Mathieu Urstein
     </footer>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -311,7 +307,7 @@
 <!-- jQuery 2.2.3 -->
 <script async="" src="//www.google-analytics.com/analytics.js"></script><script src="./plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="./plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="./plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -320,9 +316,9 @@
 <!-- FastClick -->
 <script src="./plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="./dist/js/app.min.js"></script>
+<script src="./js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="./dist/js/demo.js"></script>
+<script src="./js/demo.js"></script>
 <!-- page script -->
 <script>
     $(function () {

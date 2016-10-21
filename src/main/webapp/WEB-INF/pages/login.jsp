@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sebbos
+  User: Mathieu Urstein and Sébastien Boson
   Date: 28.09.2016
   Time: 17:01
 --%>
@@ -26,7 +26,7 @@
     <link href="css/landing-page.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -85,11 +85,11 @@
                 <form id="loginForm" method="post" action="">
                     <div class="form-group">
                         <label for="userName">Username (email):</label>
-                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" required>
+                        <input type="email" class="form-control" id="userName" name="userName" placeholder="example@domain.com" value="${requestScope.givenUserName}" maxlength="${requestScope.maxInputSize}" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" required>
+                        <input type="password" class="form-control" id="password" name="password" value="${requestScope.givenPassword}" maxlength="${requestScope.maxInputSize}" required>
                     </div>
                     <button type="submit" class="btn btn-default">Login</button>
                     <a href="register" class="pull-right">Register</a>
