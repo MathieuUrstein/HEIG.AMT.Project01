@@ -50,7 +50,7 @@ When you have executed the shell script, the application can be accessed by ente
 
 If you need to access to the database of the application, you can use the web application phpMyAdmin by entering the following URL in a web browser: **http://localhost:6060**. You can use the administrator account **root** with the password **adminpw** to connect yourself.
 
-You will see that data is already present in the database used by the project (named project01). This data is added when we build the MySQL Docker image (a .sql file to build the database and an other to add data). It is for test purpose.
+You will see that data is already present in the database used by the project (named **project01**). This data is added when we build the MySQL Docker image (a .sql file to build the database and an other to add data). It is for test purpose.
 
 ## Features of the Java EE application
 
@@ -62,7 +62,7 @@ You can find a description of the REST API of this Java EE application and a Pos
 
 ## JMeter script
 
-In the scripts folder you will find a test.jmx file. You can open this file in JMeter, launch the corresponding tests (all in the same time) and see the results (normally all the tests must be in green). These tests launch several HTTP requests (GET, POST, PUT and DELETE) to the REST API. It is for testing the concurrency of the application.
+In the scripts folder you will find a **test.jmx** file. You can open this file in JMeter, launch the corresponding tests (all in the same time) and see the results (normally all the tests must be in green). These tests launch several HTTP requests (GET, POST, PUT and DELETE) to the REST API. It is for testing the concurrency of the application.
 
 
 Mathieu Urstein and Sébastien Boson
