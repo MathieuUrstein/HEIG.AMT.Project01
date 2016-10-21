@@ -44,7 +44,7 @@ If an error occurrs, you can enter these four commands by hand in the scripts di
 
 ## Access the Java EE application
 
-When you have executed the shell script, the application can be accessed by entering the following URL in a web browser: **http://localhost:9090/Project01**.
+When you have executed the shell script, the application can be accessed by entering the following URL in a web browser: **http://localhost:9090/Project01/**.
 
 ## Access the MySQL database of the Java EE application
 
