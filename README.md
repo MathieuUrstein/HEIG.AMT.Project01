@@ -50,7 +50,16 @@ When you have executed the shell script, the application can be accessed by ente
 
 If you need to access to the database of the application, you can use the web application phpMyAdmin by entering the following URL in a web browser: **http://localhost:6060**. You can use the administrator account **root** with the password **adminpw** to connect yourself.
 
-You will see that data is already present in the database used by the project (named **project01**). This data is added when we build the MySQL Docker image (a .sql file to build the database and an other to add data). It is for test purpose.
+You will see that data is already present in the database used by the project (named **project01**). This data is added when we build the MySQL Docker image (a .sql file to build the database and an other to add data). It is for test purpose. Below you can find this data that appears as a list:
+
+```
+id        last name       first name           user name                              password
+1         Urstein         Mathieu              mathieu.urstein@heig-vd.ch             1234
+2         Boson           Sébastien            sebastien.boson@heig-vd.ch             5678
+3         Smith           John                 john.smith@heig-vd.ch                  1234
+4         Bonvin          Paul                 paul.bonvin@heig-vd.ch                 5678
+5         Petit           Jean                 jean.petit@heig-vd.ch                  1234
+```
 
 ## Features of the Java EE application
 
