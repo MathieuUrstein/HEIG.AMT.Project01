@@ -63,7 +63,7 @@ id        last name       first name           user name                        
 
 ## Features of the Java EE application
 
-When you access the application with the browser, you will see the welcome page. From there you can access the login page. Now you can login if you have already an account or go to the register page to create a new account. When your are connected, you are redirected to the protected page. You can also go back to the welcome page and go to the administration page with the new link. In this page you can see all the user accounts in the database (id, last name, first name, user name, but not password for security reasons). At the end you can logout with the specific link in a page and your session will be ended and you will be redirected to the welcome page.
+When you access the application with the browser, you will see the welcome page. From there you can access the login page. Now you can login if you have already an account (or you want to use a test's user) or go to the register page to create a new account. When your are connected, you are redirected to the protected page. You can also go back to the welcome page and go to the administration page with the new link. In this page you can see all the user accounts in the database (id, last name, first name, user name, but not password for security reasons). At the end you can logout with the specific link in a page and your session will be ended and you will be redirected to the welcome page.
 
 ## REST API
 
