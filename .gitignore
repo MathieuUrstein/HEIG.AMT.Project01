@@ -4,6 +4,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+# War files
+.war
 
 nbproject/private/
 build/
