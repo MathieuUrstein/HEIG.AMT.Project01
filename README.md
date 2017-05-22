@@ -2,7 +2,7 @@
 
 Welcome to the main repository for the first project of the AMT course at HEIG-VD.
 
-This project is a simple Java EE application that manage user accounts. All the information about these accounts is stored in a MySQL database.
+This project is a simple Java EE application that manages user accounts. All the information about these accounts is stored in a MySQL database.
 
 ## Deploy the Java EE application
 
