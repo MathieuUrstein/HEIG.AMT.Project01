@@ -73,5 +73,6 @@ You can find a description of the REST API of this Java EE application and a Pos
 
 In the scripts folder you will find a **test.jmx** file. You can open this file in Apache JMeter, launch the corresponding tests (all in the same time) and see the results (normally all the tests must be in green). These tests launch several HTTP requests (GET, POST, PUT and DELETE) to the REST API. It is for testing the concurrency of the application.
 
+## Authors
 
-Mathieu Urstein and Sébastien Boson
+Made by [Sébastien Boson](https://github.com/sebastie-boson) and [Mathieu Urstein](https://github.com/MathieuUrstein).
